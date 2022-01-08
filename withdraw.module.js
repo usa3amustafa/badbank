@@ -3,13 +3,8 @@ const withdrawBtn = document.getElementById('withdraw-btn')
 const error = document.getElementById('error')
 const withdrawForm = document.getElementById('withdraw-form')
 
-function isEmpty() {
-  if (withdrawAmount.value !== '') {
-    withdrawBtn.removeAttribute('disabled')
-  } else if (withdrawAmount.value === '') {
-    withdrawBtn.setAttribute('disabled', true)
-  }
-}
+let withdrawBalance = 500
+balance.innerText = withdrawBalance
 
 withdrawForm.addEventListener('submit', e => {
   // if value is a negative
@@ -27,7 +22,8 @@ withdrawForm.addEventListener('submit', e => {
     Number(withdrawAmount.value) > 0
   ) {
     e.preventDefault()
-    error.innerText = 'withdraw amount is number'
+    withdrawBalance -= Number(withdrawAmount.value)
+    balance.innerText = withdrawBalance
     withdrawAmount.value = ''
     withdrawBtn.setAttribute('disabled', true)
   }

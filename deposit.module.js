@@ -2,14 +2,10 @@ const depositAmount = document.getElementById('deposit-amount')
 const depositBtn = document.getElementById('deposit-btn')
 const error = document.getElementById('error')
 const depositForm = document.getElementById('deposit-form')
+const balance = document.getElementById('balance')
 
-function isEmpty() {
-  if (depositAmount.value !== '') {
-    depositBtn.removeAttribute('disabled')
-  } else if (depositAmount.value === '') {
-    depositBtn.setAttribute('disabled', true)
-  }
-}
+let depositBalance = 0
+balance.innerText = depositBalance
 
 depositForm.addEventListener('submit', e => {
   // if value is a negative
@@ -27,7 +23,9 @@ depositForm.addEventListener('submit', e => {
     Number(depositAmount.value) > 0
   ) {
     e.preventDefault()
-    error.innerText = 'deposit amount is number'
+    depositBalance += Number(depositAmount.value)
+    balance.innerText = depositBalance
+
     depositAmount.value = ''
     depositBtn.setAttribute('disabled', true)
   }

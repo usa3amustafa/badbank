@@ -22,7 +22,8 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- js  -->
-    <script src="./app.js" defer></script>
+    <script src="./app.module.js" type="module" defer></script>
+    <script src="./alldata.module.js" type="module" defer></script>
   </head>
   <body>
     <!-- navbar start  -->
@@ -106,27 +107,13 @@
     <table class="table container mt-5 w-50 border-1">
       <thead>
         <tr>
-          <th scope="col">Email</th>
           <th scope="col">Name</th>
+          <th scope="col">Email</th>
           <th scope="col">Password</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Jane Doe</td>
-          <td>jane@me.com</td>
-          <td>access123</td>
-        </tr>
-        <tr>
-          <td>Peter Parker</td>
-          <td>peter@mit.edu</td>
-          <td>Passcode321</td>
-        </tr>
-        <tr>
-          <td>John Smith</td>
-          <td>john@msn.com</td>
-          <td>Letmein33</td>
-        </tr>
+        <tr id="all-data-body"></tr>
       </tbody>
     </table>
     <!-- all data table end -->

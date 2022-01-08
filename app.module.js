@@ -1,8 +1,8 @@
-// navbar tooltip
 const currentLocation = location.href
 const navLinks = document.querySelectorAll('.nav-link')
-
 const navLinksLength = navLinks.length
+
+// navbar tooltip
 
 for (let i = 0; i < navLinks.length; i++) {
   if (navLinks[i].href === currentLocation) {

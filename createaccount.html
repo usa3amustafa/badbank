@@ -22,8 +22,8 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- js  -->
-    <script src="./app.js" defer></script>
-    <script src="./createaccount.js" defer></script>
+    <script src="./app.module.js" type="module" defer></script>
+    <script src="./createaccount.module.js" type="module" defer></script>
   </head>
   <body>
     <!-- navbar start  -->
@@ -154,5 +154,26 @@
       </div>
     </div>
     <!-- create account form end -->
+    <script>
+      const userName = document.getElementById('name')
+      const email = document.getElementById('email')
+      const password = document.getElementById('password')
+      const createAccountBtn = document.getElementById('createaccountbtn')
+      function isEmpty() {
+        if (
+          userName.value !== '' ||
+          email.value !== '' ||
+          password.value !== ''
+        ) {
+          createAccountBtn.removeAttribute('disabled')
+        } else if (
+          userName.value === '' ||
+          email.value === '' ||
+          password.value === ''
+        ) {
+          createAccountBtn.setAttribute('disabled', true)
+        }
+      }
+    </script>
   </body>
 </html>
