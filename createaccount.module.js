@@ -33,11 +33,13 @@ createAccountForm.addEventListener('submit', e => {
     createAccountBtn.setAttribute('disabled', true)
   } else {
     e.preventDefault()
-    arrInfo.push([userName.value, email.value, password.value])
-    localStorage.setItem('data', JSON.stringify(arrInfo))
+    arrInfo.push(userName.value, email.value, password.value)
+    localStorage.setItem('account', JSON.stringify(arrInfo))
+
     alert('A New Account has been created successfully')
     userName.value = ''
     email.value = ''
     password.value = ''
+    createAccountBtn.setAttribute('disabled', true)
   }
 })

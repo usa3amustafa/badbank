@@ -4,7 +4,9 @@ const error = document.getElementById('error')
 const depositForm = document.getElementById('deposit-form')
 const balance = document.getElementById('balance')
 
-let depositBalance = 0
+let depositBalance = Number(
+  localStorage.getItem(JSON.parse(JSON.stringify('balance')))
+)
 balance.innerText = depositBalance
 
 depositForm.addEventListener('submit', e => {
@@ -24,6 +26,8 @@ depositForm.addEventListener('submit', e => {
   ) {
     e.preventDefault()
     depositBalance += Number(depositAmount.value)
+    localStorage.setItem('balance', depositBalance)
+
     balance.innerText = depositBalance
 
     depositAmount.value = ''

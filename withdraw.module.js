@@ -3,13 +3,20 @@ const withdrawBtn = document.getElementById('withdraw-btn')
 const error = document.getElementById('error')
 const withdrawForm = document.getElementById('withdraw-form')
 
-let withdrawBalance = 500
+let withdrawBalance = Number(
+  localStorage.getItem(JSON.parse(JSON.stringify('balance')))
+)
+
 balance.innerText = withdrawBalance
 
 withdrawForm.addEventListener('submit', e => {
   // if value is a negative
-
-  if (Number(withdrawAmount.value) < 0) {
+  if (withdrawBalance < Number(withdrawAmount.value)) {
+    e.preventDefault()
+    error.textContent = 'cannot make a withdrawl greater than available balance'
+    withdrawAmount.value = ''
+    withdrawBtn.setAttribute('disabled', true)
+  } else if (Number(withdrawAmount.value) < 0) {
     e.preventDefault()
     error.innerText = 'withdraw amount must be greater than 0'
     withdrawAmount.value = ''
@@ -22,8 +29,10 @@ withdrawForm.addEventListener('submit', e => {
     Number(withdrawAmount.value) > 0
   ) {
     e.preventDefault()
+    error.textContent = ''
     withdrawBalance -= Number(withdrawAmount.value)
     balance.innerText = withdrawBalance
+    localStorage.setItem('balance', withdrawBalance)
     withdrawAmount.value = ''
     withdrawBtn.setAttribute('disabled', true)
   }

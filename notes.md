@@ -2,8 +2,10 @@
 
 ## active classes on navbar and tooltips DONE
 
-## disabled buttons
+## disabled buttons DONE
 
-## input validations
+## input validations DONE
 
-## withdrawl , deposits , create account
+## withdrawl , deposits DONE
+
+## create account
