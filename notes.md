@@ -1,6 +1,8 @@
-## Front End Part - create pages with bootstrap and custom css
+## Front End Part - create pages with bootstrap and custom css DONE
 
-## disabled inputs and active class on nav bar
+## active classes on navbar and tooltips DONE
+
+## disabled buttons
 
 ## input validations
 

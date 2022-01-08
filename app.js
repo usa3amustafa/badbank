@@ -1,3 +1,4 @@
+// navbar tooltip
 const currentLocation = location.href
 const navLinks = document.querySelectorAll('.nav-link')
 
@@ -10,10 +11,9 @@ for (let i = 0; i < navLinks.length; i++) {
 }
 
 // tooltips
-
-var tooltipTriggerList = [].slice.call(
+const tooltipTriggerList = [].slice.call(
   document.querySelectorAll('[data-bs-toggle="tooltip"]')
 )
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })

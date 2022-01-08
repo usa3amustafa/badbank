@@ -23,11 +23,12 @@
 
     <!-- js  -->
     <script src="./app.js" defer></script>
+    <script src="./createaccount.js" defer></script>
   </head>
   <body>
     <!-- navbar start  -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4">
       <div class="container d-flex justify-content-between">
         <a class="navbar-brand" href="./index.html">Bad Bank</a>
         <button
@@ -108,13 +109,17 @@
     >
       <div class="card">
         <div class="card-body">
-          <form>
+          <h2 class="mb-5">Create An Account</h2>
+          <h6 class="text-danger" id="error"></h6>
+
+          <form id="createaccountform">
             <div class="mb-3">
               <input
                 type="text"
                 class="form-control"
                 id="name"
                 placeholder="NAME"
+                onkeyup="isEmpty()"
               />
             </div>
             <div class="mb-3">
@@ -123,6 +128,7 @@
                 class="form-control"
                 id="email"
                 placeholder="EMAIL"
+                onkeyup="isEmpty()"
               />
             </div>
             <div class="mb-3">
@@ -131,10 +137,18 @@
                 class="form-control"
                 id="password"
                 placeholder="PASSWORD"
+                onkeyup="isEmpty()"
               />
             </div>
 
-            <button type="submit" class="btn btn-dark">Create Account</button>
+            <button
+              type="submit"
+              disabled
+              class="btn btn-dark"
+              id="createaccountbtn"
+            >
+              Create Account
+            </button>
           </form>
         </div>
       </div>
