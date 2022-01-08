@@ -7,9 +7,13 @@ const createAccountForm = document.getElementById('createaccountform')
 const createAccountError = document.getElementById('error')
 
 function isEmpty() {
-  if (userName !== '' || email !== '' || password !== '') {
+  if (userName.value !== '' || email.value !== '' || password.value !== '') {
     createAccountBtn.removeAttribute('disabled')
-  } else if (userName === '' || email === '' || password === '') {
+  } else if (
+    userName.value === '' ||
+    email.value === '' ||
+    password.value === ''
+  ) {
     createAccountBtn.setAttribute('disabled', true)
   }
 }
