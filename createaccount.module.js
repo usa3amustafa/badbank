@@ -8,6 +8,12 @@ const createAccountError = document.getElementById('error')
 
 let containsData = false
 
+if (localStorage.getItem('account') !== null) {
+  createAccountBtn.innerText = 'Create Another Account'
+} else {
+  createAccountBtn.innerText = 'Create Account'
+}
+
 // create account validations
 createAccountForm.addEventListener('submit', e => {
   if (userName.value === '' || userName.value === null) {
@@ -26,7 +32,8 @@ createAccountForm.addEventListener('submit', e => {
     createAccountBtn.setAttribute('disabled', true)
   } else if (password.value.length < 8 || password.value === null) {
     e.preventDefault()
-    createAccountError.textContent = 'Password must be 8 charectors long'
+    createAccountError.textContent =
+      'Password must be atleast 8 charectors long'
     userName.value = ''
     email.value = ''
     password.value = ''
