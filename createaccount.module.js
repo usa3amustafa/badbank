@@ -6,13 +6,7 @@ const createAccountBtn = document.getElementById('createaccountbtn')
 const createAccountForm = document.getElementById('createaccountform')
 const createAccountError = document.getElementById('error')
 
-let arrInfo = []
-
-if (localStorage.getItem('account') !== null) {
-  createAccountBtn.innerText = 'Create Another Account'
-} else {
-  createAccountBtn.innerText = 'Create Account'
-}
+let containsData = false
 
 // create account validations
 createAccountForm.addEventListener('submit', e => {
@@ -39,11 +33,22 @@ createAccountForm.addEventListener('submit', e => {
     createAccountBtn.setAttribute('disabled', true)
   } else {
     e.preventDefault()
-    const data = JSON.parse(localStorage.getItem('account'))
 
-    data.push(userName.value, email.value, password.value)
-    // arrInfo.push(userName.value, email.value, password.value)
-    localStorage.setItem('account', JSON.stringify(data))
+    if (localStorage.getItem('account') !== null) {
+      const data = JSON.parse(localStorage.getItem('account'))
+      data.push(userName.value, email.value, password.value)
+      localStorage.setItem('account', JSON.stringify(data))
+    } else {
+      const data = []
+      data.push(userName.value, email.value, password.value)
+      localStorage.setItem('account', JSON.stringify(data))
+      containsData = true
+      if (containsData) {
+        createAccountBtn.innerText = 'Create Another Account'
+      } else {
+        createAccountBtn.innerText = 'Create Account'
+      }
+    }
 
     alert('A New Account has been created successfully')
     userName.value = ''
