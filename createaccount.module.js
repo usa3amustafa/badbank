@@ -8,6 +8,12 @@ const createAccountError = document.getElementById('error')
 
 let arrInfo = []
 
+if (localStorage.getItem('account') !== null) {
+  createAccountBtn.innerText = 'Create Another Account'
+} else {
+  createAccountBtn.innerText = 'Create Account'
+}
+
 // create account validations
 createAccountForm.addEventListener('submit', e => {
   if (userName.value === '' || userName.value === null) {
@@ -33,8 +39,11 @@ createAccountForm.addEventListener('submit', e => {
     createAccountBtn.setAttribute('disabled', true)
   } else {
     e.preventDefault()
-    arrInfo.push(userName.value, email.value, password.value)
-    localStorage.setItem('account', JSON.stringify(arrInfo))
+    const data = JSON.parse(localStorage.getItem('account'))
+
+    data.push(userName.value, email.value, password.value)
+    // arrInfo.push(userName.value, email.value, password.value)
+    localStorage.setItem('account', JSON.stringify(data))
 
     alert('A New Account has been created successfully')
     userName.value = ''
